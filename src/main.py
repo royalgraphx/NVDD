@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 
 # Define various variables
 DEBUG = "FALSE"
-CARNATIONSINTERNAL = "FALSE"
+CARNATIONSINTERNAL = "TRUE"
 NVDD_vers = "0.0.1"
 
 def get_host_os():
@@ -324,7 +324,7 @@ def main():
 
         if CARNATIONSINTERNAL == "TRUE":
             if choice == 1:
-                createNVDD()
+                createNVDD(71510)
             elif choice == 2:
                 readNVDD_DB_menuOption()
             elif choice == 3:
@@ -348,8 +348,7 @@ def main():
         # Pause to show the result before clearing the screen again
         click.pause()
 
-
-def createNVDD(start=2196):
+def createNVDD(start=0):
     """
     Create and populate the NVIDIA Driver Database starting from a given URL ID.
 
@@ -372,8 +371,9 @@ def createNVDD(start=2196):
         getPageInfo(driver_url)
         print()
 
-        # Optionally, you can add a delay between requests to avoid hitting the server too hard
-        time.sleep(1)  # sleep in between requests
+        # Optionally, you can add a delay between requests to avoid hitting the server too hard or getting
+        # Rate limited by the website, sometimes errors can happen randomly where the DNS resolution fails.
+        # time.sleep(1)  # sleep in between requests
 
 def readNVDD_DB_menuOption():
     clear_console_deeply()

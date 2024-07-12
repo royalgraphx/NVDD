@@ -305,12 +305,6 @@ elif [[ "$(uname)" == "Darwin" ]]; then
     if [ $? -ne 0 ]; then
         install_requirements_pip
     fi
-    
-    # Check for nasm comand, install via Homebrew if not found
-    if ! check_nasm; then
-        echo "Attempting to install nasm..."
-        install_packages_brew nasm
-    fi
 
     # sleep 5
 
